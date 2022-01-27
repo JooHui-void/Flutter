@@ -1,4 +1,4 @@
-# fult
+# flutter
 
 A new Flutter project.
 
