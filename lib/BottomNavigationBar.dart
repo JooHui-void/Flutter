@@ -20,10 +20,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _index=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: [
+      appBar: AppBar(
+        title:Text('BottomNavigaionBar'),
+      ),
+      bottomNavigationBar:
+      BottomNavigationBar(
+        backgroundColor: Colors.grey,
+        selectedItemColor: Colors.white,
+        currentIndex: _index,
+        onTap: (int index){
+          setState(() {
+            _index=index;
+          });
+        },
+        items: [
         BottomNavigationBarItem(
           icon:Icon(Icons.home),
           title:Text('Home'),
@@ -37,7 +51,35 @@ class _HomePageState extends State<HomePage> {
           title:Text('Notification'),
         ),
       ],),
-
+      body: Center(
+        child: _Options.elementAt(_index),
+      ),
     );
+
+
   }
+  List _Options=[
+        Container(
+          color: Colors.black,
+          child:
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            elevation:10,
+
+          ),
+          width: 400,
+          height:400,
+          padding: const EdgeInsets.all(8.0),
+        ),
+
+    Container(
+      color: Colors.purple,
+    ),
+    Container(
+      color: Colors.green,
+    ),
+
+  ];
 }
